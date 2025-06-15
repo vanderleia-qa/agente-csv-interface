@@ -19,7 +19,7 @@ async function askAgent() {
     formData.append('question', question);
 
     // **ATENÇÃO:** Substitua ESTA URL pela URL do seu Webhook do n8n
-    const n8nWebhookUrl = 'SUA_URL_WEBHOOK_N8N_AQUI';
+    const n8nWebhookUrl = 'http://localhost:5678/webhook-test/pergunta';
 
     try {
         const response = await fetch(n8nWebhookUrl, {
