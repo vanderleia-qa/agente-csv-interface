@@ -1,12 +1,8 @@
+// Exemplo ajustado de script.js
 async function askAgent() {
-    const csvFile = document.getElementById('csvFile').files[0];
     const question = document.getElementById('questionInput').value;
     const responseDiv = document.getElementById('response');
 
-    if (!csvFile) {
-        responseDiv.innerText = "Por favor, selecione um arquivo CSV.";
-        return;
-    }
     if (!question.trim()) {
         responseDiv.innerText = "Por favor, digite sua pergunta.";
         return;
@@ -14,17 +10,17 @@ async function askAgent() {
 
     responseDiv.innerText = "Processando sua pergunta...";
 
-    const formData = new FormData();
-    formData.append('csvFile', csvFile);
-    formData.append('question', question);
+    const dataToSend = { question: question }; // Apenas a pergunta
 
-    // **ATENÇÃO:** Substitua ESTA URL pela URL do seu Webhook do n8n
-    const n8nWebhookUrl = 'http://localhost:5678/webhook-test/pergunta';
+    const n8nWebhookUrl = 'http://localhost:5678/webhook-test/pergunta'; // URL do Webhook do n8n
 
     try {
         const response = await fetch(n8nWebhookUrl, {
             method: 'POST',
-            body: formData
+            headers: {
+                'Content-Type': 'application/json' // Agora enviamos JSON puro
+            },
+            body: JSON.stringify(dataToSend) // Converta o objeto para JSON string
         });
 
         if (!response.ok) {
