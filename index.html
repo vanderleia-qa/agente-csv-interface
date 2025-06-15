@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agente CSV</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .container { max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ccc; border-radius: 8px; }
+        input[type="file"], input[type="text"], button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #response {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #eee;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+            white-space: pre-wrap; /* Para preservar quebras de linha */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Agente de Consulta CSV</h1>
+        <input type="file" id="csvFile" accept=".csv,.zip">
+        <input type="text" id="questionInput" placeholder="Digite sua pergunta sobre o CSV...">
+        <button onclick="askAgent()">Enviar Pergunta</button>
+        <div id="response">Aguardando pergunta...</div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
